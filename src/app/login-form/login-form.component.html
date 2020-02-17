@@ -1,0 +1,29 @@
+<nb-card class="login-form-card">
+  <nb-card-body class="login-form-card-body" [formGroup]="loginFormFb">
+    <label>Login</label>
+    <input nbInput formControlName="login">
+    <label>Password</label>
+    <input nbInput formControlName="password">
+  </nb-card-body>
+  <nb-card-footer class="login-form-card-footer">
+    <button nbButton (click)="login(loginFormFb.value)">Log In</button>
+    <span *ngIf="loginFormFbValue$ | async as value">
+      {{value | json}}
+    </span>
+  </nb-card-footer>
+</nb-card>
+
+<nb-card class="login-form-card">
+  <nb-card-body class="login-form-card-body" [formGroup]="loginFormClass">
+    <label>Login</label>
+    <input nbInput formControlName="login">
+    <label>Password</label>
+    <input nbInput formControlName="password">
+  </nb-card-body>
+  <nb-card-footer class="login-form-card-footer">
+    <button nbButton (click)="login(loginFormClass.value)">Log In</button>
+    <span *ngIf="loginFormClassValue$ | async as value">
+      {{value | json}}
+    </span>
+  </nb-card-footer>
+</nb-card>
