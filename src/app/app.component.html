@@ -1,4 +1,26 @@
-<nb-layout>
+<nb-layout windowMode>
+  <nb-layout-header>
+    <nb-actions size="medium">
+      <nb-action [routerLink]="['/login']">
+        Login
+      </nb-action>
+      <nb-action [routerLink]="['/select']">
+        Select
+      </nb-action>
+      <nb-action [routerLink]="['/checkbox']">
+        Checkbox
+      </nb-action>
+      <nb-action [routerLink]="['/checkbox-array']">
+        Checkbox Array
+      </nb-action>
+      <nb-action [routerLink]="['/dynamic-form-group']">
+        Dynamic Form Group
+      </nb-action>
+      <nb-action [routerLink]="['/validation-form']">
+        Validation Form
+      </nb-action>
+    </nb-actions>
+  </nb-layout-header>
   <nb-layout-column>
     <router-outlet></router-outlet>
   </nb-layout-column>

@@ -1,0 +1,62 @@
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  width: 100%;
+
+  .form-card {
+    display: flex;
+    width: 30%;
+
+    .form-card-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+
+      label {
+        margin-top: 10px;
+      }
+    }
+
+    .form-card-footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      button {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+.checkbox-items {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 15px;
+}
+
+.dynamic-items {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .dynamic-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+
+    span {
+      width: 25%;
+    }
+    input {
+      width: 50%;
+    }
+  }
+}

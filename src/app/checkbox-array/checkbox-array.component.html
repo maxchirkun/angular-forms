@@ -1,0 +1,16 @@
+<div class="content" *ngIf="items$ | async as items">
+  <nb-card class="form-card">
+    <nb-card-body class="form-card-body" [formGroup]="checkBoxesFormGroup">
+      <div class="checkbox-items" formArrayName="items">
+        <nb-checkbox *ngFor="let item of items; let i=index" [formControlName]="i">
+          {{ item.name }}
+        </nb-checkbox>
+      </div>
+    </nb-card-body>
+    <nb-card-footer>
+      <span>
+        {{itemsValue$ | async | json}}
+      </span>
+    </nb-card-footer>
+  </nb-card>
+</div>

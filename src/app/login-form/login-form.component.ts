@@ -1,6 +1,6 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, TemplateRef} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
-import {Observable} from 'rxjs';
+import {NbDialogService} from '@nebular/theme';
 
 interface LoginFormValue {
   login: string;
@@ -10,27 +10,25 @@ interface LoginFormValue {
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.scss'],
+  styleUrls: ['../app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginFormComponent {
 
-  loginFormFb: FormGroup = this.fb.group({
-    login: this.fb.control(''),
+  loginFormGroup: FormGroup = this.fb.group({
+    login: [''],
     password: this.fb.control(''),
   });
-  readonly loginFormFbValue$: Observable<LoginFormValue> = this.loginFormFb.valueChanges;
 
-  loginFormClass: FormGroup = new FormGroup({
-    login: new FormControl(''),
-    password: new FormControl(''),
-  });
-  readonly loginFormClassValue$: Observable<LoginFormValue> = this.loginFormClass.valueChanges;
+  loginControl: FormControl = new FormControl('');
+  passwordControl: FormControl = new FormControl('');
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private dialogService: NbDialogService) {
   }
 
-  login(formValue: LoginFormValue) {
-    console.log(formValue);
+  login(formValue: LoginFormValue, dialog: TemplateRef<any>) {
+    if (formValue.login.length > 0 && formValue.password.length > 0) {
+      this.dialogService.open(dialog, {context: {login: formValue.login, password: formValue.password}});
+    }
   }
 }

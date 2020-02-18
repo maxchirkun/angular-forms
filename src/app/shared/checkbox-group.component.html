@@ -1,0 +1,8 @@
+<div class="checkbox-items">
+  <ng-container *ngFor="let item of items">
+    <nb-checkbox (click)="selectCheckbox(item)" [checked]="item.selected">
+      {{ item.name }}
+    </nb-checkbox>
+  </ng-container>
+</div>
+

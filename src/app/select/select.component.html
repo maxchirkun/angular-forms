@@ -1,0 +1,24 @@
+<div class="content">
+  <nb-card class="form-card">
+    <nb-card-header>Select Form</nb-card-header>
+    <ng-container *ngIf="countries$ | async as countries">
+      <nb-card-body class="form-card-body" [formGroup]="selectForm">
+        <label>Country</label>
+        <nb-select placeholder="Select Country" formControlName="country">
+          <nb-option *ngFor="let country of countries" [value]="country">{{country.name}}</nb-option>
+        </nb-select>
+        <ng-container *ngIf="cities$ | async as cities">
+          <label>City</label>
+          <nb-select placeholder="Select City" formControlName="city">
+            <nb-option *ngFor="let city of cities" [value]="city">{{city.name}}</nb-option>
+          </nb-select>
+        </ng-container>
+      </nb-card-body>
+      <nb-card-footer class="card-footer">
+          <span *ngIf="selectedValue$ | async as value">
+            {{value | json}}
+          </span>
+      </nb-card-footer>
+    </ng-container>
+  </nb-card>
+</div>

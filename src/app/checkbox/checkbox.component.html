@@ -1,0 +1,12 @@
+<div class="content">
+  <nb-card class="form-card">
+    <nb-card-body class="form-card-body">
+      <app-checkbox-group [formControl]="items"></app-checkbox-group>
+    </nb-card-body>
+    <nb-card-footer>
+      <span>
+        {{itemsValue$ | async | json}}
+      </span>
+    </nb-card-footer>
+  </nb-card>
+</div>

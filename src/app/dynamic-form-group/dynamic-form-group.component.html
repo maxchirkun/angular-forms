@@ -1,0 +1,23 @@
+<div class="content" *ngIf="items$ | async as items">
+  <nb-card class="form-card">
+    <nb-card-header>Items</nb-card-header>
+    <nb-card-body class="form-card-body" [formGroup]="dynamicFormGroup">
+      <div class="dynamic-items">
+        <div class="dynamic-item" *ngFor="let item of items">
+          <span>{{item.name}}</span>
+          <input nbInput [formControlName]="item.name">
+          <nb-icon icon="minus-circle-outline" status="danger" (click)="removeItem(item.name)"></nb-icon>
+        </div>
+      </div>
+    </nb-card-body>
+    <nb-card-footer>
+      <div>
+        <input style="margin-bottom: 10px" nbInput [formControl]="newItemFormControl" fullWidth>
+        <button  style="margin-bottom: 10px" nbButton (click)="addItem()" fullWidth>Add item</button>
+      </div>
+      <span>
+        {{itemsValue$ | async | json}}
+      </span>
+    </nb-card-footer>
+  </nb-card>
+</div>

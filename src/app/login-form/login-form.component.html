@@ -1,29 +1,39 @@
-<nb-card class="login-form-card">
-  <nb-card-body class="login-form-card-body" [formGroup]="loginFormFb">
-    <label>Login</label>
-    <input nbInput formControlName="login">
-    <label>Password</label>
-    <input nbInput formControlName="password">
-  </nb-card-body>
-  <nb-card-footer class="login-form-card-footer">
-    <button nbButton (click)="login(loginFormFb.value)">Log In</button>
-    <span *ngIf="loginFormFbValue$ | async as value">
-      {{value | json}}
-    </span>
-  </nb-card-footer>
-</nb-card>
+<div class="content">
+  <nb-card class="form-card">
+    <nb-card-header>Login Form</nb-card-header>
+    <nb-card-body class="form-card-body" [formGroup]="loginFormGroup">
+      <label>Login</label>
+      <input nbInput formControlName="login">
+      <label>Password</label>
+      <input nbInput formControlName="password">
+    </nb-card-body>
+    <nb-card-footer class="form-card-footer">
+      <button nbButton (click)="login(loginFormGroup.value, dialog)">Log In</button>
+    </nb-card-footer>
+  </nb-card>
 
-<nb-card class="login-form-card">
-  <nb-card-body class="login-form-card-body" [formGroup]="loginFormClass">
-    <label>Login</label>
-    <input nbInput formControlName="login">
-    <label>Password</label>
-    <input nbInput formControlName="password">
-  </nb-card-body>
-  <nb-card-footer class="login-form-card-footer">
-    <button nbButton (click)="login(loginFormClass.value)">Log In</button>
-    <span *ngIf="loginFormClassValue$ | async as value">
-      {{value | json}}
-    </span>
-  </nb-card-footer>
-</nb-card>
+  <nb-card class="form-card">
+    <nb-card-header>Login Form</nb-card-header>
+    <nb-card-body class="form-card-body">
+      <label>Login</label>
+      <input nbInput [formControl]="loginControl">
+      <label>Password</label>
+      <input nbInput [formControl]="passwordControl">
+    </nb-card-body>
+    <nb-card-footer class="form-card-footer">
+      <button nbButton (click)="login({login: loginControl.value, password: passwordControl.value}, dialog)">
+        Log In
+      </button>
+    </nb-card-footer>
+  </nb-card>
+</div>
+
+<ng-template #dialog let-data let-ref="dialogRef">
+  <nb-card>
+    <nb-card-header>Hello, {{ data.login }}!</nb-card-header>
+    <nb-card-body>Your password: {{data.password }}</nb-card-body>
+    <nb-card-footer>
+      <button nbButton (click)="ref.close()">Ok</button>
+    </nb-card-footer>
+  </nb-card>
+</ng-template>

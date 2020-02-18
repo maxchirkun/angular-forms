@@ -1,0 +1,86 @@
+<div class="content">
+  <nb-card class="form-card">
+    <nb-card-header>Validation Form</nb-card-header>
+    <nb-card-body class="form-card-body" [formGroup]="validationFormGroup">
+      <label>Full Name</label>
+      <input nbInput formControlName="name" fullWidth>
+      <span style="color: red;" *ngIf="(name.hasError('required') || name.hasError('minLength')) && name.touched">Invalid Name!</span>
+      <label>Date of Birth</label>
+      <input nbInput placeholder="Pick Birth Date" [nbDatepicker]="datepicker" formControlName="birthDate" fullWidth>
+      <span style="color: red;" *ngIf="birthDate.hasError('required') && birthDate.touched">Date of Birth required</span>
+      <nb-datepicker #datepicker format="MMM DD, YYYY"></nb-datepicker>
+      <label>Gender</label>
+      <nb-select placeholder="Select Gender" formControlName="gender" fullWidth>
+        <nb-option value="1">Agender</nb-option>
+        <nb-option value="2">Androgyne</nb-option>
+        <nb-option value="3">Androgynous</nb-option>
+        <nb-option value="4">Bigender</nb-option>
+        <nb-option value="5">Cis</nb-option>
+        <nb-option value="6">Cisgender</nb-option>
+        <nb-option value="7">Cis Female</nb-option>
+        <nb-option value="8">Cis Male</nb-option>
+        <nb-option value="9">Cis Man</nb-option>
+        <nb-option value="10">Cis Woman</nb-option>
+        <nb-option value="11">Cisgender Female</nb-option>
+        <nb-option value="12">Cisgender Male</nb-option>
+        <nb-option value="13">Cisgender Man</nb-option>
+        <nb-option value="14">Cisgender Woman</nb-option>
+        <nb-option value="15">Female to Male</nb-option>
+        <nb-option value="16">FTM</nb-option>
+        <nb-option value="17">Gender Fluid</nb-option>
+        <nb-option value="18">Gender Nonconforming</nb-option>
+        <nb-option value="19">Gender Questioning</nb-option>
+        <nb-option value="20">Gender Variant</nb-option>
+        <nb-option value="21">Genderqueer</nb-option>
+        <nb-option value="22">Intersex</nb-option>
+        <nb-option value="23">Male to Female</nb-option>
+        <nb-option value="24">MTF</nb-option>
+        <nb-option value="25">Neither</nb-option>
+        <nb-option value="26">Neutrois</nb-option>
+        <nb-option value="27">Non-binary</nb-option>
+        <nb-option value="28">Other</nb-option>
+        <nb-option value="29">Pangender</nb-option>
+        <nb-option value="30">Trans</nb-option>
+        <nb-option value="31">Trans*</nb-option>
+        <nb-option value="32">Trans Female</nb-option>
+        <nb-option value="33">Trans* Female</nb-option>
+        <nb-option value="34">Trans Male</nb-option>
+        <nb-option value="35">Trans* Male</nb-option>
+        <nb-option value="36">Trans Man</nb-option>
+        <nb-option value="37">Trans* Man</nb-option>
+        <nb-option value="38">Trans Person</nb-option>
+        <nb-option value="39">Trans* Person</nb-option>
+        <nb-option value="40">Trans Woman</nb-option>
+        <nb-option value="41">Trans* Woman</nb-option>
+        <nb-option value="42">Transfeminine</nb-option>
+        <nb-option value="43">Transgender</nb-option>
+        <nb-option value="44">Transgender Female</nb-option>
+        <nb-option value="45">Transgender Male</nb-option>
+        <nb-option value="46">Transgender Man</nb-option>
+        <nb-option value="47">Transgender Person</nb-option>
+        <nb-option value="48">Transgender Woman</nb-option>
+        <nb-option value="49">Transmasculine</nb-option>
+        <nb-option value="50">Transsexual</nb-option>
+        <nb-option value="51">Transsexual Female</nb-option>
+        <nb-option value="52">Transsexual Male</nb-option>
+        <nb-option value="53">Transsexual Man</nb-option>
+        <nb-option value="54">Transsexual Person</nb-option>
+        <nb-option value="55">Transsexual Woman</nb-option>
+        <nb-option value="56">Two-Spirit</nb-option>
+      </nb-select>
+      <span style="color: red;" *ngIf="gender.hasError('required') && gender.touched">Gender required</span>
+      <label>Skills</label>
+      <app-checkbox-group formControlName="skills"></app-checkbox-group>
+      <span style="color: red;" *ngIf="skills.hasError('minTwoSelected') && skills.dirty">Please choose 2 skills at least</span>
+    </nb-card-body>
+    <nb-card-footer class="form-card-footer">
+      <button nbButton (click)="save()">Save</button>
+      <span>
+        VALUE: {{value$ | async | json}}
+      </span>
+      <span>
+        VALID VALUE: {{validValue$ | async | json}}
+      </span>
+    </nb-card-footer>
+  </nb-card>
+</div>
